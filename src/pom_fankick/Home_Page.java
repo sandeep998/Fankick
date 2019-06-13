@@ -141,14 +141,14 @@ public class Home_Page extends Base_Class_fankick {
 	public static void PickStartDate() throws Exception {
 
 		List<WebElement> allDates = driver.findElements(By.xpath(
-				"//*[@id='root']/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div/div[2]/div[1]/form/div/div[4]/ul/li[1]/div/div[2]/div/span[1]/div[2]/div/div/div/div/div[2]/div[2]/table/tbody/tr/td"));
+				"//*[@id=\"root\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div[1]/div/div[2]/div/span/div[2]/div/div/div/div/div[2]/div[2]/table/tbody/tr/td"));
 
 		for (WebElement ele : allDates) {
 
 			String date = ele.getText();
 			// System.out.println("all dates " + date);
 
-			if (date.equalsIgnoreCase("31")) {
+			if (date.equalsIgnoreCase("12")) {
 				Thread.sleep(4000);
 				ele.click();
 				break;

@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="51317" started-at="2019-05-30T12:50:23Z" finished-at="2019-05-30T12:51:14Z">
+  <suite name="Default suite" duration-ms="67843" started-at="2019-06-13T05:59:22Z" finished-at="2019-06-13T06:00:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="51317" started-at="2019-05-30T12:50:23Z" finished-at="2019-05-30T12:51:14Z">
+    <test name="Default test" duration-ms="67843" started-at="2019-06-13T05:59:22Z" finished-at="2019-06-13T06:00:30Z">
       <class name="testExcutions.TS002_Sports_Contest">
-        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:testExcutions.TS002_Sports_Contest@68be2bc2]" name="launchBrowser" is-config="true" duration-ms="11762" started-at="2019-05-30T12:50:23Z" finished-at="2019-05-30T12:50:35Z">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:testExcutions.TS002_Sports_Contest@68be2bc2]" name="launchBrowser" is-config="true" duration-ms="10277" started-at="2019-06-13T05:59:22Z" finished-at="2019-06-13T05:59:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="sportsContest()[pri:0, instance:testExcutions.TS002_Sports_Contest@68be2bc2]" name="sportsContest" duration-ms="39186" started-at="2019-05-30T12:50:35Z" finished-at="2019-05-30T12:51:14Z">
+        <test-method status="PASS" signature="sportsContest()[pri:0, instance:testExcutions.TS002_Sports_Contest@68be2bc2]" name="sportsContest" duration-ms="57283" started-at="2019-06-13T05:59:33Z" finished-at="2019-06-13T06:00:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sportsContest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testExcutions.TS002_Sports_Contest@68be2bc2]" name="tearDown" is-config="true" duration-ms="344" started-at="2019-05-30T12:51:14Z" finished-at="2019-05-30T12:51:14Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testExcutions.TS002_Sports_Contest@68be2bc2]" name="tearDown" is-config="true" duration-ms="232" started-at="2019-06-13T06:00:30Z" finished-at="2019-06-13T06:00:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

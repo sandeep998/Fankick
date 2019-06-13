@@ -1,7 +1,14 @@
+
 package testExcutions;
+
+import java.awt.Desktop.Action;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,14 +22,13 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-
 import pom_fankick.Login_Page;
 import pom_fankick.Sports_Content;
 import utility.Base_Class_fankick;
 import utility.Config_file;
 
 public class TS002_Sports_Contest extends Base_Class_fankick {
-	
+
 	static WebDriver driver;
 
 	static Config_file cong;
@@ -32,15 +38,13 @@ public class TS002_Sports_Contest extends Base_Class_fankick {
 
 	public static ExtentReports reports;
 	static ExtentTest logger;
-	
-	
+
 	@BeforeClass
 
 	public void launchBrowser() throws Exception {
 
 		reports = new ExtentReports(
-				"C:\\Users\\smandhala\\eclipse-workspace\\FanKick\\src\\reports_screenshots\\Report_Sports.html",
-				true);
+				"C:\\Users\\smandhala\\eclipse-workspace\\FanKick\\src\\reports_screenshots\\Report_Sports.html", true);
 		logger = reports.startTest("verify test");
 
 		System.setProperty("webdriver.chrome.driver",
@@ -115,10 +119,8 @@ public class TS002_Sports_Contest extends Base_Class_fankick {
 		}
 
 	}
-	
-	
-	@Test
 
+	@Test
 	public static void sportsContest() throws Exception {
 
 		testcaseLogin();
@@ -140,11 +142,14 @@ public class TS002_Sports_Contest extends Base_Class_fankick {
 			Thread.sleep(3000);
 
 			WebElement Availability = driver
-					.findElement(By.xpath("//*[@id='leftMenuView']/div/div/div[2]/div[1]/div/ul/li[11]"));
+					.findElement(By.xpath("//*[@id='leftMenuView']/div/div/div[2]/div[1]/div/ul/li[10]/i"));
 
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView(true);", Availability);
-			Availability.click();
+
+			Thread.sleep(3000);
+
+			driver.findElement(By.xpath("//*[@id='leftMenuView']/div/div/div[2]/div[1]/div/ul/li[10]")).click();
 
 			Thread.sleep(3000);
 			logger.log(LogStatus.INFO, "Scrooled to FPL contest and clicked FPL");
@@ -155,66 +160,241 @@ public class TS002_Sports_Contest extends Base_Class_fankick {
 
 			captureScreenshot(driver, "Error");
 		}
-		
+
 		worldcup = new Sports_Content(driver);
-		
+
 		worldcup.createContest();
-		
+
 		worldcup.ClickContest();
-		
+
 		logger.log(LogStatus.INFO, "Clicked Contest");
-		
-		
+
 		worldcup.ClickSports();
-		
-	
-		
+
 		worldcup.ContestCategory();
 		worldcup.DropContestCategory();
-		
+
 		worldcup.SeriesW();
-		
+
 		worldcup.DropSeriesW();
-		
+
 		worldcup.SubContest1();
 		worldcup.DropSubContest();
-		
-	WebElement str=	worldcup.MatchNumber("12134");
-	
-	String matchnumber1=str.getAttribute("value");
-	
-	System.out.println("match number  "+matchnumber1);
-	
-	
-	WebElement tagg1 = driver.findElement(By.xpath("//div[text()='Select Location']"));
-	JavascriptExecutor js = (JavascriptExecutor) driver;
-	js.executeScript("arguments[0].scrollIntoView(true);", tagg1);
-	
-	  Thread.sleep(3000);
-	driver.findElement(By.cssSelector(".ant-col-20 .ant-tag")).click();
-    driver.findElement(By.cssSelector(".ant-input-sm")).sendKeys("jhkvfshjcdhjvchjvx");
-    Thread.sleep(3000);
-    driver.findElement(By.cssSelector(".ant-col-24:nth-child(11) .ant-tag")).click();
-    driver.findElement(By.cssSelector(".ant-input-sm")).sendKeys("bdfgdfjgjdfjkgdjkf");
-    
-    Thread.sleep(3000);
-    driver.findElement(By.cssSelector(".ant-col-24 > .ant-row .CreatesocialpostsTypeTagWords > .ant-tag")).click();
-    driver.findElement(By.cssSelector(".ant-col-24:nth-child(12) .ant-input")).sendKeys("hjkfdghjdfhjgjhdf");
-    
-    Thread.sleep(3000);
-    driver.findElement(By.cssSelector(".ant-col-24:nth-child(12)")).click();
-		Thread.sleep(4000);
-		
-		
-}
-	
+
+///Match Number Random
+
+		Random randomGenerator = new Random();
+
+		int randomInt = randomGenerator.nextInt(1000);
+
+		WebElement matchnumber = driver.findElement(By.xpath("//input[@placeholder='Match No']"));
+
+		matchnumber.sendKeys(" " + randomInt);
+
+		String matchnumber1 = matchnumber.getAttribute("value");
+
+		System.out.println("match number  " + matchnumber1);
+
+		driver.findElement(By.xpath(
+				"//*[@id='root']/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div[1]/div/div[2]/div/span/div[1]/input"))
+				.click();
+
+		Thread.sleep(3000);
+
+		driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div[1]/div/div[2]/div/span/div[2]/div/div/div/div/div[2]/div[3]/span/a[1]"))
+				.click();
+
+		driver.findElement(By.xpath(
+				"//*[@id='root']/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div[2]/div/div[2]/div/span/div/input"))
+				.click();
+
+		driver.findElement(By.xpath(
+				"//*[@id='root']/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div[2]/div/div[2]/div/span/div[2]/div/div/div/div/div[1]/div/input"))
+				.sendKeys("2019-06-13 22:30:15");
+
+		driver.findElement(By.xpath(
+				"//a[text()='Ok']"))
+				.click();
+
+		// datesHandle();
+		// finaDates();
+
+		/*
+		 * worldcup.DateClick();
+		 * 
+		 * worldcup.PickStartDate1();
+		 */
+
+		worldcup.TeamOne();
+
+		worldcup.TeamTwo();
+
+		WebElement titlec = driver.findElement(By.xpath(
+				"//*[@id='root']/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[1]/form/div/div[4]/div[1]/div/div/div[2]/div/input"));
+		JavascriptExecutor jsweek = (JavascriptExecutor) driver;
+		jsweek.executeScript("arguments[0].scrollIntoView(true);", titlec);
+
+		titlec.sendKeys("No title");
+
+		// worldcup.contest("sandeep");
+
+		// worldcup.ContentDescription();
+
+		worldcup.ContentDescriptionDrop("new content");
+
+		Thread.sleep(5000);
+
+		worldcup.SelectImage();
+
+		Runtime.getRuntime().exec("C:\\Users\\smandhala\\Videos\\tryit12.exe");
+
+		worldcup.AddsType();
+
+		worldcup.AddsTypeDrop();
+		worldcup.rotationTimeadd("77");
+
+		worldcup.CountryIn();
+
+		worldcup.CountryInDrop();
+
+		worldcup.SelectLoctaion();
+
+		worldcup.SelectLoctaionDrop();
+
+		/*
+		 * WebElement tagg1 =
+		 * driver.findElement(By.xpath("//div[text()='Select Location']"));
+		 * JavascriptExecutor js = (JavascriptExecutor) driver;
+		 * js.executeScript("arguments[0].scrollIntoView(true);", tagg1);
+		 */
+
+		AddTagValues();
+
+	}
+
 	@AfterTest
 	public static void tearDown() {
 		reports.flush();
 		reports.endTest(logger);
 
 		logger.log(LogStatus.INFO, "App Ready to Close ");
-		//driver.quit();
+		// driver.quit();
 
 	}
+
+	public static void AddTagValues() throws Exception {
+
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector(".ant-col-20 .ant-tag")).click();
+		driver.findElement(By.cssSelector(".ant-input-sm")).sendKeys("jhkvfshjcdhjvchjvx");
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector(".ant-col-24:nth-child(11) .ant-tag")).click();
+		driver.findElement(By.cssSelector(".ant-input-sm")).sendKeys("bdfgdfjgjdfjkgdjkf");
+
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector(".ant-col-24 > .ant-row .CreatesocialpostsTypeTagWords > .ant-tag")).click();
+		driver.findElement(By.cssSelector(".ant-col-24:nth-child(12) .ant-input")).sendKeys("hjkfdghjdfhjgjhdf");
+
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector(".ant-col-24:nth-child(12)")).click();
+		Thread.sleep(4000);
+	}
+
+	
+	// dates 
+	public static void datesHandle() {
+
+		driver.findElement(By.xpath("(//input[@value=''])[6]")).click();
+		driver.findElement(By.xpath(
+				"//div[@id='root']/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/div[2]/div/form/div/div[2]/div/div/div[2]/div/span/div[2]/div/div/div/div/div/div/input"))
+				.clear();
+		driver.findElement(By.xpath(
+				"//div[@id='root']/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/div[2]/div/form/div/div[2]/div/div/div[2]/div/span/div[2]/div/div/div/div/div/div/input"))
+				.sendKeys("2019-06-27 16:39:58");
+		driver.findElement(By.xpath("//form/div/div/div[2]/div")).click();
+		driver.findElement(By.xpath("(//input[@value=''])[6]")).click();
+		driver.findElement(By.xpath("//span/div[2]/div/div/div/div/div/div/input")).click();
+		driver.findElement(By.xpath("(//input[@value=''])[6]")).click();
+		driver.findElement(By.xpath("//span/div[2]/div/div/div/div/div/div/input")).clear();
+
+		driver.findElement(By.xpath("//span/div[2]/div/div/div/div/div/div/input")).sendKeys("2019-06-27 16:39:59");
+		driver.findElement(By.xpath("//form/div/div/div[2]/div")).click();
+
+	}
+
+	public static void finaDates() {
+
+		// Declare DateTimeFormatter with desired format
+
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+		// Save current LocalDateTime into a variable
+
+		LocalDateTime localDateTime = LocalDateTime.now();
+
+		// Format LocalDateTime into a String variable and print
+
+		String formattedLocalDateTime = localDateTime.format(dateTimeFormatter);
+
+		System.out.println("Current Date: " + formattedLocalDateTime);
+
+		// Get random amount of days between 5 and 10
+
+		Random random = new Random();
+
+		int randomAmountOfDays = random.nextInt(10 - 5 + 1) + 5;
+
+		System.out.println("Random amount of days: " + randomAmountOfDays);
+
+		Random random1 = new Random();
+
+		int randomAmountOfDays1 = random1.nextInt(10 - 5 + 1) + 5;
+
+		System.out.println("Random amount of days: " + randomAmountOfDays1);
+
+		// Add randomAmountOfDays to LocalDateTime variable we defined earlier and store
+		// it into a new variable
+
+		LocalDateTime futureLocalDateTime = localDateTime.plusDays(randomAmountOfDays);
+
+		LocalDateTime futureLocalDateTime1 = localDateTime.plusDays(randomAmountOfDays1);
+
+		// Format new LocalDateTime variable into a String variable and print
+
+		String formattedFutureLocalDateTime = futureLocalDateTime.format(dateTimeFormatter);
+
+		String formattedFutureLocalDateTime1 = futureLocalDateTime1.format(dateTimeFormatter);
+
+		System.out.println("Date " + randomAmountOfDays + " days in future: " + formattedFutureLocalDateTime);
+
+		System.out.println("Date " + randomAmountOfDays1 + " days in future: " + formattedFutureLocalDateTime1);
+
+		driver.findElement(By.xpath("(//input[@value=''])[6]")).click();
+
+		driver.findElement(By.xpath(
+				"//div[@id='root']/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/div[2]/div/form/div/div[2]/div/div/div[2]/div/span/div[2]/div/div/div/div/div/div/input"))
+				.clear();
+
+		driver.findElement(By.xpath(
+				"//div[@id='root']/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/div[2]/div/form/div/div[2]/div/div/div[2]/div/span/div[2]/div/div/div/div/div/div/input"))
+				.sendKeys(formattedFutureLocalDateTime);
+
+		driver.findElement(By.xpath("//form/div/div/div[2]/div")).click();
+
+		driver.findElement(By.xpath("(//input[@value=''])[6]")).click();
+
+		driver.findElement(By.xpath("//span/div[2]/div/div/div/div/div/div/input")).click();
+
+		driver.findElement(By.xpath("(//input[@value=''])[6]")).click();
+
+		driver.findElement(By.xpath("//span/div[2]/div/div/div/div/div/div/input")).clear();
+
+		driver.findElement(By.xpath("//span/div[2]/div/div/div/div/div/div/input"))
+				.sendKeys(formattedFutureLocalDateTime1);
+
+		driver.findElement(By.xpath("//form/div/div/div[2]/div")).click();
+
+	}
+
 }

@@ -145,7 +145,7 @@ public class TS001_Movie_Contest extends Base_Class_fankick {
 			Thread.sleep(3000);
 
 			WebElement Availability = driver
-					.findElement(By.xpath("//*[@id='leftMenuView']/div/div/div[2]/div[1]/div/ul/li[11]"));
+					.findElement(By.xpath("//*[@id='leftMenuView']/div/div/div[2]/div[1]/div/ul/li[10]"));
 
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView(true);", Availability);
@@ -277,8 +277,9 @@ public class TS001_Movie_Contest extends Base_Class_fankick {
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".ant-input-sm")).sendKeys("something");
-		
-	//	driver.findElement(By.xpath("//*[@id='tags']/div")).sendKeys("test by sandeep");
+
+		// driver.findElement(By.xpath("//*[@id='tags']/div")).sendKeys("test by
+		// sandeep");
 
 		logger.log(LogStatus.INFO, "Clicked tagvalue");
 		Thread.sleep(10000);
@@ -315,7 +316,7 @@ public class TS001_Movie_Contest extends Base_Class_fankick {
 		reports.endTest(logger);
 
 		logger.log(LogStatus.INFO, "App Ready to Close ");
-		//driver.quit();
+		// driver.quit();
 
 	}
 
